@@ -63,7 +63,7 @@ def debit_form(request):
 
 def debit(request):
     account = Account.objects.get(user=request.user)
-    amount = int(request.POST['debit'])
+    amount = float(request.POST['debit'])
     Transaction.objects.create(user=account, debit=amount)
     account.debit += amount
     account.balance += amount
@@ -78,7 +78,7 @@ def credit_form(request):
 
 def credit(request):
     account = Account.objects.get(user=request.user)
-    amount = int(request.POST['credit'])
+    amount = float(request.POST['credit'])
     Transaction.objects.create(user=account, credit=amount)
     account.credit -= amount
     account.balance -= amount
