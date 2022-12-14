@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Expense Tracker</title>
+    </head>
+    <body>
+        {% extends 'tracker/header.html' %}
+        {% block content %}
+        <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#">Expense Tracker</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="False" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                  {% if user.is_authenticated %}
+
+                      <li class="nav-item">
+                        <a class="nav-link" href="logout">Logout</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Welcome, {{user.username}}</a>
+                      </li>
+                  {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                      </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </nav>
+            <h1>Welcome to Expense Tracker App</h1>
+            {% if user.is_authenticated %}
+            <div class="container p-4">
+                <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+                              <div class="card h-100 p-4">
+                                <h4>{{account.user}}</h4>
+                                <p class="text-muted">Total Balance: {{account.balance}}</p>
+                                <p>{{account.plot}}</p>
+                                <a href="{% url 'tracker:debit_form' %}">Debit Amount</a>
+                                <a href="{% url 'tracker:credit_form' %}">Credit Amount</a>
+                              </div>
+                        </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+</head>
+<body>
+        <form action="{% url 'tracker:credit' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend><h1>{{ account.user }}</h1></legend>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                <label for="credit">Credit Amount</label><br>
+                <input type="text" name="credit" id="credit">
+            </fieldset>
+            <input type="submit" value="Credit">
+        </form>
+</body>
+</html>
