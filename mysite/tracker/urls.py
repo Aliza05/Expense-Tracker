@@ -19,5 +19,5 @@ urlpatterns = [
 
     path("credit_form", views.credit_form, name="credit_form"),
 
-    path("credit", views.credit, name="credit")
+    path("credit", views.credit, name="credit"),
 ]
