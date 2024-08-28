@@ -1,7 +1,7 @@
 pipeline {
-    agent { docker { image 'python:3.12.5-alpine3.20' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 sh 'python manage.py runserver'
             }
