@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+</head>
+<body>
+        <form action="{% url 'tracker:debit' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend><h4>{{ account.user }}</h4></legend>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                <label for="debit">Debit Amount</label><br>
+                <input type="text" name="debit" id="debit">
+            </fieldset>
+            <input type="submit" value="Debit">
+        </form>
+</body>
+</html>
